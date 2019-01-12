@@ -23,15 +23,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 INCLUDEPATH += $$PWD/include
-DEFINES += CONFIG_STARFIELD_MODULE
+#DEFINES += CONFIG_STARFIELD_MODULE
+DEFINES += CONFIG_SNAKE_MODULE
 
 SOURCES += src/main.cpp\
-        src/window.cpp
+        src/window.cpp \
+    challenges/snake/engine.cpp
 
-HEADERS  += include/window.h
+HEADERS  += include/window.h \
+    include/snake/field.h \
+    include/snake/engine.h
 
 contains(DEFINES, CONFIG_STARFIELD_MODULE)
 {
     SOURCES += challenges/starfield/starfield.cpp
     HEADERS += include/starfield.h
+}
+
+contains(DEFINES, CONFIG_SNAKE_MODULE)
+{
+    SOURCES += challenges/snake/field.cpp
+    HEADERS += include/snake/field.h
 }
