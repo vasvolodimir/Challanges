@@ -53,6 +53,11 @@ void Window::addItem(QGraphicsItem *item)
     m_scene->addItem(item);
 }
 
+void Window::setBrush(QBrush brush)
+{
+    this->setBackgroundBrush(brush);
+}
+
 QGraphicsScene *Window::getScene() const
 {
     return m_scene;

@@ -24,6 +24,7 @@ public:
 
     QSize sizeHint() const;
     void addItem(QGraphicsItem *item);
+    void setBrush(QBrush brush);
     QGraphicsScene *getScene() const;
 
 protected:
