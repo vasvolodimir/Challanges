@@ -5,13 +5,19 @@ Field::Field(QObject *parent)
       m_arena(nullptr),
       m_width(1300),
       m_height(700),
-      m_spot_size(20)
+      m_spot_size(20),
+      m_vcount(0),
+      m_hcount(0),
+      m_snake(nullptr)
 {
     int width = Window::instance().getScene()->width();
     int height = Window::instance().getScene()->height();
 
     mapFieldBorders(width, height);
     createSpots();
+
+    m_snake = new Snake(this);
+    m_snake->addSnake();
 }
 
 Field &Field::instance()
@@ -24,6 +30,11 @@ Field &Field::instance()
 Field::~Field()
 {
 
+}
+
+QVector<Spot *> &Field::getSpots()
+{
+    return m_spots;
 }
 
 void Field::mapFieldBorders(size_t width, size_t height)
@@ -78,6 +89,11 @@ void Field::createSpots()
                              m_spot_size)));
             id++;
         }
+
+    m_hcount = m_width / m_spot_size;
+    m_vcount = m_height / m_spot_size;
+
+    qDebug() << "Spots count: " << m_hcount << m_vcount;
  }
 
 void Field::drawLines(double x, double y) const

@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 
 #ifdef CONFIG_SNAKE_MODULE
     Field::instance();
+    Engine::instance();
 #endif
 
     return a.exec();

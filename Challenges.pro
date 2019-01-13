@@ -28,11 +28,14 @@ DEFINES += CONFIG_SNAKE_MODULE
 
 SOURCES += src/main.cpp\
         src/window.cpp \
-    challenges/snake/engine.cpp
+    challenges/snake/engine.cpp \
+    challenges/snake/snake.cpp
 
 HEADERS  += include/window.h \
     include/snake/field.h \
-    include/snake/engine.h
+    include/snake/engine.h \
+    challenges/snake/snake.h \
+    include/snake/snake.h
 
 contains(DEFINES, CONFIG_STARFIELD_MODULE)
 {

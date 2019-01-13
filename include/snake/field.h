@@ -7,6 +7,9 @@
 
 #include "window.h"
 #include "engine.h"
+#include "snake.h"
+
+class Snake;
 
 class Field : public QObject
 {
@@ -19,6 +22,7 @@ class Field : public QObject
     public:
             static Field &instance();
             ~Field();
+            QVector<Spot*> &getSpots();
 
     private:
             void mapFieldBorders(size_t width, size_t height);
@@ -32,6 +36,8 @@ class Field : public QObject
             QPointF m_start_point;
             size_t m_spot_size;
             QVector<Spot*> m_spots;
+            size_t m_vcount, m_hcount;
+            Snake *m_snake;
 };
 
 #endif // FIELD_H
